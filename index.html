@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app"></div>
+</body>
+<script src="index.js"></script>
+<script>
+  const element = {
+      type: "div",
+      props: {
+        id: "container",
+        children: [
+          {
+            type: "input",
+            props: {
+              value: "foo",
+              type: "text",
+              onKeyDown: event => console.log(event.target.value)
+            }
+          },
+          {
+            type: "a",
+            props: {
+              href: "/bar",
+              children: [{ type: "TEXT_ELEMENT", props: { nodeValue: "Link" } }]
+            }
+          },
+          {
+            type: "span",
+            props: {
+              children: [
+                { type: "TEXT_ELEMENT", props: { nodeValue: "first " } },
+                {
+                  type: "span",
+                  props: {
+                    children: [
+                      { type: "TEXT_ELEMENT", props: { nodeValue: "second" } }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    };
+
+    render(element, document.getElementById("app"));
+</script>
+</html>
