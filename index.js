@@ -1,35 +1,25 @@
-function render(element, parentDom) {
-  const { type, props } = element;
+/** @jsx Talkey.createObjElement */
 
-  // checks
-  const isTextElement = type === "TEXT_ELEMENT";
-  const isListener = name => name.startsWith("on");
-  const isAttribute = name => !isListener(name) && name !== "children";
+const app = (
+  <div id="container">
+    <input
+      value="foo"
+      type="text"
+      onKeyDown={e => console.log(e.target.value)}
+    />
 
-  /// Create DOM element
-  const dom = isTextElement
-    ? document.createTextNode("")
-    : document.createElement(type);
+    <button onClick={e => console.log("Hi")}>click me</button>
+    <br />
+    <ul>
+      <li>foo</li>
+    </ul>
+    <p>
+      foo{" "}
+      <strong>
+        strong element <span>span</span>
+      </strong>
+    </p>
+  </div>
+);
 
-  // Add event listeners
-  Object.keys(props)
-    .filter(isListener)
-    .forEach(method => {
-      const eventType = method.toLowerCase().substring(2);
-      dom.addEventListener(eventType, props[method]);
-    });
-
-  // Set properties
-  Object.keys(props)
-    .filter(isAttribute)
-    .forEach(attrName => {
-      dom[attrName] = props[attrName];
-    });
-
-  // Render children
-  const childElements = props.children || [];
-  childElements.forEach(child => render(child, dom));
-
-  // Append to parent
-  parentDom.appendChild(dom);
-}
+TalkeyDOM.render(app, document.getElementById("app"));

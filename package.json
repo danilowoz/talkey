@@ -1,0 +1,25 @@
+{
+  "name": "talkey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "devDependencies": {
+    "@babel/cli": "^7.5.0",
+    "@babel/core": "^7.5.4",
+    "@babel/plugin-transform-react-jsx": "^7.3.0",
+    "@babel/preset-env": "^7.5.4"
+  },
+  "scripts": {
+    "dev": "babel index.js --watch --out-file build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/danilowoz/talkey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/danilowoz/talkey/issues"
+  },
+  "homepage": "https://github.com/danilowoz/talkey#readme"
+}
